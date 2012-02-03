@@ -1,0 +1,248 @@
+====package com.brian.andtactoe;
+
+public class board {
+
+	String[][] brd = new String[3][3];
+	int counter = 0;
+
+	public void setdata(int turn, int row, int col) {
+		if (turn == 1) {
+			brd[row][col] = "X";
+		} else {
+			brd[row][col] = "O";
+		}
+		counter++;
+	}
+
+	public int[] cpumove() {
+		String tmp;
+		for (int i = 0; i < 2; i++) {
+			if (i == 1) {
+				tmp = "X";
+			} else {
+				tmp = "O";
+			}
+
+			if (((brd[0][0] == tmp) && brd[0][0] == brd[0][1])
+					&& brd[0][2] == null) {
+				int[] a = { 0, 2 };
+				counter++;
+				return a;
+			} else if (((brd[0][1] == tmp) && brd[0][1] == brd[0][2])
+					&& brd[0][0] == null) {
+				int[] a = { 0, 0 };
+				counter++;
+				return a;
+			} else if (((brd[0][0] == tmp) && brd[0][0] == brd[0][2])
+					&& brd[0][1] == null) {
+				int[] a = { 0, 1 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[1][0] == tmp) && brd[1][0] == brd[1][1])
+					&& brd[1][2] == null) {
+				int[] a = { 1, 2 };
+				counter++;
+				return a;
+			} else if (((brd[1][1] == tmp) && brd[1][1] == brd[1][2])
+					&& brd[1][0] == null) {
+				int[] a = { 1, 0 };
+				counter++;
+				return a;
+			} else if (((brd[1][0] == tmp) && brd[1][0] == brd[1][2])
+					&& brd[1][1] == null) {
+				int[] a = { 1, 1 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[2][0] == tmp) && brd[2][0] == brd[2][1])
+					&& brd[2][2] == null) {
+				int[] a = { 2, 2 };
+				counter++;
+				return a;
+			} else if (((brd[2][1] == tmp) && brd[2][1] == brd[2][2])
+					&& brd[2][0] == null) {
+				int[] a = { 2, 0 };
+				counter++;
+				return a;
+			} else if (((brd[2][0] == tmp) && brd[2][0] == brd[2][2])
+					&& brd[2][1] == null) {
+				int[] a = { 2, 1 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[0][0] == tmp) && brd[0][0] == brd[1][0])
+					&& brd[2][0] == null) {
+				int[] a = { 2, 0 };
+				counter++;
+				return a;
+			} else if (((brd[1][0] == tmp) && brd[1][0] == brd[2][0])
+					&& brd[0][0] == null) {
+				int[] a = { 0, 0 };
+				counter++;
+				return a;
+			} else if (((brd[0][0] == tmp) && brd[0][0] == brd[2][0])
+					&& brd[1][0] == null) {
+				int[] a = { 1, 0 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[0][1] == tmp) && brd[0][1] == brd[1][1])
+					&& brd[2][1] == null) {
+				int[] a = { 2, 1 };
+				counter++;
+				return a;
+			} else if (((brd[1][1] == tmp) && brd[1][1] == brd[2][1])
+					&& brd[0][1] == null) {
+				int[] a = { 0, 1 };
+				counter++;
+				return a;
+			} else if (((brd[0][1] == tmp) && brd[0][1] == brd[2][1])
+					&& brd[1][1] == null) {
+				int[] a = { 1, 1 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[0][2] == tmp) && brd[0][2] == brd[1][2])
+					&& brd[2][2] == null) {
+				int[] a = { 2, 2 };
+				counter++;
+				return a;
+			} else if (((brd[1][2] == tmp) && brd[1][2] == brd[2][2])
+					&& brd[0][2] == null) {
+				int[] a = { 0, 2 };
+				counter++;
+				return a;
+			} else if (((brd[0][2] == tmp) && brd[0][2] == brd[2][2])
+					&& brd[1][2] == null) {
+				int[] a = { 1, 2 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[0][0] == tmp) && brd[0][0] == brd[1][1])
+					&& brd[2][2] == null) {
+				int[] a = { 2, 2 };
+				counter++;
+				return a;
+			} else if (((brd[1][1] == tmp) && brd[1][1] == brd[2][2])
+					&& brd[0][0] == null) {
+				int[] a = { 0, 0 };
+				counter++;
+				return a;
+			} else if (((brd[0][0] == tmp) && brd[0][0] == brd[2][2])
+					&& brd[1][1] == null) {
+				int[] a = { 1, 1 };
+				counter++;
+				return a;// mark #######################################
+			} else if (((brd[0][2] == tmp) && brd[0][2] == brd[1][1])
+					&& brd[2][0] == null) {
+				int[] a = { 2, 0 };
+				counter++;
+				return a;
+			} else if (((brd[2][0] == tmp) && brd[2][0] == brd[1][1])
+					&& brd[0][2] == null) {
+				int[] a = { 0, 2 };
+				counter++;
+				return a;
+			} else if (((brd[2][0] == tmp) && brd[2][0] == brd[0][2])
+					&& brd[1][1] == null) {
+				int[] a = { 1, 1 };
+				counter++;
+				return a;// mark #######################################
+			}
+		}
+
+		if (brd[1][1] == null) {
+			int[] a = { 1, 1 };
+			counter++;
+			return a;
+
+		} else {
+			if (brd[0][0] == null) {
+				int[] a = { 0, 0 };
+				counter++;
+				return a;
+			} else if (brd[2][0] == null) {
+				int[] a = { 2, 0 };
+				counter++;
+				return a;
+			} else if (brd[0][2] == null) {
+				int[] a = { 0, 2 };
+				counter++;
+				return a;
+			} else if (brd[2][2] == null) {
+				int[] a = { 2, 2 };
+				counter++;
+				return a;
+			} else {
+				
+				for (int q = 0; q < brd.length; q++) {
+					for (int x = 0; x < brd.length; x++) {
+						if (brd[x][q] == null) {
+							int[] a = { x, q };
+							counter++;
+							return a;
+						}
+					}
+				}
+			}
+		}
+
+		counter++;
+		int[] a = { 3, 3 };
+		return a;
+	}
+
+	public int getturn() {
+		if (counter % 2 == 0) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	public String getdata(int row, int col) {
+		return brd[col][row];
+	}
+
+	public boolean full() {
+		boolean temp = true;
+		for (int i = 0; i < brd.length; i++) {
+			for (int j = 0; j < brd.length; j++) {
+				if (brd[i][j] == null) {
+					temp = false;
+				}
+			}
+		}
+		if (temp == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isdone() {
+		if ((brd[0][0] == "X" || brd[0][0] == "O") && brd[0][0] == brd[0][1]
+				&& brd[0][0] == brd[0][2]) {
+			return true;
+		} else if ((brd[1][0] == "X" || brd[1][0] == "O")
+				&& brd[1][0] == brd[1][1] && brd[1][0] == brd[1][2]) {
+			return true;
+		} else if ((brd[2][0] == "X" || brd[2][0] == "O")
+				&& brd[2][0] == brd[2][1] && brd[2][0] == brd[2][2]) {
+			return true;
+		} else if ((brd[0][0] == "X" || brd[0][0] == "O")
+				&& brd[0][0] == brd[1][0] && brd[0][0] == brd[2][0]) {
+			return true;
+		} else if ((brd[0][1] == "X" || brd[0][1] == "O")
+				&& brd[0][1] == brd[1][1] && brd[1][1] == brd[2][1]) {
+			return true;
+		} else if ((brd[0][2] == "X" || brd[0][2] == "O")
+				&& brd[0][2] == brd[1][2] && brd[0][2] == brd[2][2]) {
+			return true;
+		} else if ((brd[0][0] == "X" || brd[0][0] == "O")
+				&& brd[0][0] == brd[1][1] && brd[0][0] == brd[2][2]) {
+			return true;
+		} else if ((brd[2][0] == "X" || brd[2][0] == "O")
+				&& brd[2][0] == brd[1][1] && brd[2][0] == brd[0][2]) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+}
