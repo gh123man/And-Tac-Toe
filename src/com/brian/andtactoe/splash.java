@@ -10,12 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class splash extends Activity {
-	
-	//global stuff
-	
+
+	// global stuff
+
 	TextView tv;
-	//main stuff
-	
+
+	// called on activity start
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,9 +23,8 @@ public class splash extends Activity {
 
 		Button b1 = (Button) findViewById(R.id.button1);
 		Button b2 = (Button) findViewById(R.id.button2);
-		
-		
 
+		// option buttons for game mode
 		b1.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -44,15 +43,12 @@ public class splash extends Activity {
 			}
 		});
 	}
-	
-	//of activity block
-	
 
-	
-	
-	
-	//gamemode begins
-	
+	// of activity block
+
+	// launches the activity with given game mode. this is a misleading method
+	// name. deal with it :p
+
 	public void gamemode(int mode) {
 		Intent go = new Intent(this, rungame.class);
 		go.putExtra("gamemode", mode);
@@ -60,8 +56,7 @@ public class splash extends Activity {
 		finish();
 	}
 
-	//sets up/launch menu
-	
+	// called when menu button is pressed, populates it
 	@Override
 	public boolean onCreateOptionsMenu(android.view.Menu menu) {
 		super.onCreateOptionsMenu(menu);
@@ -69,19 +64,17 @@ public class splash extends Activity {
 		openmen.inflate(R.menu.abtmenu, menu);
 		return true;
 	}
-	
-	//menu input and actions
+
+	// menu input and actions
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-			case R.id.about1:
-				Intent abt = new Intent(this, about.class);
-				startActivity(abt);
-			
+		switch (item.getItemId()) {
+		case R.id.about1:
+			Intent abt = new Intent(this, about.class);
+			startActivity(abt);
+
 		}
 		return false;
 	}
-
-
 
 }

@@ -1,11 +1,13 @@
 package com.brian.andtactoe;
 
+//this does all the game logic, scoring and ai
 public class board {
 
+	// sets up the array for the borad and a counter for the player turn
 	String[][] brd = new String[3][3];
 	int counter = 0;
 
-	
+	// sets data X or O
 	public void setdata(int turn, int row, int col) {
 		if (turn == 1) {
 			brd[row][col] = "X";
@@ -15,6 +17,7 @@ public class board {
 		counter++;
 	}
 
+	// called to make a cpu move. returns a list
 	public int[] cpumove(int ailvl) {
 		String tmp;
 		for (int i = 0; i < 2; i++) {
@@ -193,6 +196,7 @@ public class board {
 		return a;
 	}
 
+	// gets the current player turn. (this is what that counter is for :P )
 	public int getturn() {
 		if (counter % 2 == 0) {
 			return 1;
@@ -201,10 +205,12 @@ public class board {
 		}
 	}
 
+	// reutrns one piece of data from the board array
 	public String getdata(int row, int col) {
 		return brd[col][row];
 	}
 
+	// checks if the board is full
 	public boolean full() {
 		boolean temp = true;
 		for (int i = 0; i < brd.length; i++) {
@@ -221,6 +227,7 @@ public class board {
 		}
 	}
 
+	// checks to see if the game is doen and who won
 	public int isdone() {
 		if ((brd[0][0] == "X" || brd[0][0] == "O") && brd[0][0] == brd[0][1]
 				&& brd[0][0] == brd[0][2]) {

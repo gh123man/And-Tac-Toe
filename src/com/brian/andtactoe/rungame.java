@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class rungame extends Activity {
+
+	// init some global stuff.
 	Bundle extras;
 
 	TextView b1;
@@ -23,17 +25,18 @@ public class rungame extends Activity {
 	TextView b9;
 	TextView b10;
 	ImageView im;
-	
+
+	// defines the board which contains all of the game logic
 	board brd = new board();
 
-	
-
+	// brings back to the title screen when called
 	public void reset() {
 		Intent i = new Intent(this, splash.class);
 		finish();
 		startActivity(i);
 	}
 
+	// checks for game status, winner, player turn stuff like that
 	public String out() {
 		String temp;
 		String turn;
@@ -75,8 +78,7 @@ public class rungame extends Activity {
 			} else {
 				temp = "X" + " WINS!";
 			}
-				
-			
+
 		} else if (brd.full() == true && brd.isdone() == 0) {
 			temp = "Game is a draw";
 		} else {
@@ -85,6 +87,7 @@ public class rungame extends Activity {
 		return temp;
 	}
 
+	// gets the game mode. human vs human or ai vs human
 	public int gamemode() {
 		if (extras != null) {
 			int mode = extras.getInt("gamemode");
@@ -94,6 +97,8 @@ public class rungame extends Activity {
 		}
 	}
 
+	// sets the text of the button(text view) on the board to X or O (pulls the
+	// data fron the board array)
 	public void btnmove(int row, int col) {
 		if (row == 0 && col == 0) {
 			b1.setText(brd.getdata(row, col));
@@ -124,6 +129,9 @@ public class rungame extends Activity {
 		}
 	}
 
+	// does stuff.
+	// just kidding. makes a move, alternates turns, makes ai moves. sets the
+	// info text.
 	public void dostuff(int row, int col) {
 		if (brd.getdata(row, col) == null) {
 			if (gamemode() == 0) {
@@ -154,14 +162,17 @@ public class rungame extends Activity {
 		}
 	}
 
+	// main execution section, called with activity start
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
+		// defines stuff
+
 		extras = getIntent().getExtras();
-		
+
 		b1 = (TextView) findViewById(R.id.textView1);
 		b2 = (TextView) findViewById(R.id.textView2);
 		b3 = (TextView) findViewById(R.id.textView3);
@@ -173,10 +184,13 @@ public class rungame extends Activity {
 		b9 = (TextView) findViewById(R.id.textView9);
 		b10 = (TextView) findViewById(R.id.textView10);
 		im = (ImageView) findViewById(R.id.imageView1);
-		
 
+		// init the info text
 		b10.setText(out());
 
+		// b1 - b9 are all buttons(text views) on the board. i plan on ching
+		// this to swich case at some point.
+		// #lazy
 		b1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -268,7 +282,9 @@ public class rungame extends Activity {
 			}
 		});
 	}
+	//end of activity block
 
+	// called when the menu button is pressed. and populates it
 	@Override
 	public boolean onCreateOptionsMenu(android.view.Menu menu) {
 		// TODO Auto-generated method stub
@@ -278,19 +294,20 @@ public class rungame extends Activity {
 		return true;
 	}
 
+	// if you click an item it does what it says, reset or launches about.
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
-		switch(item.getItemId()) {
-			case R.id.reset:
-				reset();
-				break;
-			case R.id.about:
-				Intent abt = new Intent(this, about.class);
-				startActivity(abt);
-			
+		switch (item.getItemId()) {
+		case R.id.reset:
+			reset();
+			break;
+		case R.id.about:
+			Intent abt = new Intent(this, about.class);
+			startActivity(abt);
+
 		}
 		return false;
 	}
-	
+
 }
